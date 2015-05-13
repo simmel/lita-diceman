@@ -12,4 +12,11 @@ describe Lita::Handlers::Diceman, lita_handler: true do
         expect(answers.include?(reply))
     end
 
+    it "gives an random answer when using ?dice" do
+        answers = ["answer one", "answer two", "answer three"]
+        question = "Which is the correct answer"
+        send_message("?dice #{question}? " + answers.join(";"))
+        expect(replies.last.to_s).to match(/^(?:#{answers.map { |i| i.capitalize }.join("|")}) #{question.sub(/^\w+ /, "")}/)
+    end
+
 end
