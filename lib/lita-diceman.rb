@@ -7,7 +7,7 @@ module Lita
       route(/^!dice\s+(.*)/, :dice!, help: { "!dice answer one;answer two[;…]" => "Gives you a random answer." })
 
       def dice!(response)
-        response.reply(response.matches.inspect)
+        response.reply(response.match_data.captures.join.split(/ ?; ?/).inspect)
       end
 
     end
