@@ -14,8 +14,10 @@ module Lita
       end
 
       def dice?(response)
+        question = response.match_data.captures[0]
         answers = response.match_data.captures[1].split(/ ?; ?/)
-        response.reply("the dice commands: " + answers[SecureRandom.random_number(answers.size)])
+        answer = answers[SecureRandom.random_number(answers.size)]
+        response.reply(question + ":" + answer)
       end
 
     end
