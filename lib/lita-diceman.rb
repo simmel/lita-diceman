@@ -48,7 +48,7 @@ module Lita
           "who",
           "why",
         ]
-        question.sub!(/#{interrogative_words}/in, answer)
+        question.sub!(/\b(?:#{interrogative_words.join("|")})\b/i, answer)
 
         pronoun = {
           "jag" => "du",
@@ -56,9 +56,9 @@ module Lita
           "me" => "you",
           "i" => "you",
         }
-        question.sub!(/\b(?:#{pronoun.keys.join("|")})\b/n) {|p| pronoun[p] }
+        question.sub!(/\b(?:#{pronoun.keys.join("|")})\b/) {|p| pronoun[p] }
 
-        response.reply(question + ":" + answer)
+        response.reply(question)
       end
 
     end
