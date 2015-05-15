@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "lita-diceman"
-  spec.version       = "0.1.0"
+  spec.version       = "1.0.0"
   spec.authors       = ["Simon Lundström"]
   spec.email         = ["simmel@soy.se"]
   spec.description   = "Roll the dice and live by it"
