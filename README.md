@@ -17,4 +17,18 @@ gem "lita-diceman"
 
 ## Usage
 
-TODO: Describe the plugin's features and how to use them.
+### `!dice`
+returns one of the answers that you specify, randomly. You can add as many answers as you want.
+
+```
+You: !dice answer one;answer two
+Lita: the dice commands: answer two
+```
+
+### `?dice`
+returns an answer to your question.
+
+```
+You: ?dice Who is the smartest? Answer one;Answer two
+Lita: Answer one is the smartest
+```
