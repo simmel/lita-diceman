@@ -17,6 +17,47 @@ module Lita
         question = response.match_data.captures[0]
         answers = response.match_data.captures[1].split(/ ?; ?/)
         answer = answers[SecureRandom.random_number(answers.size)]
+
+        # TODO Put this in translation files?
+        interrogative_words = [
+          # Swedish
+          "bör",
+          "hur mycket",
+          "hur många",
+          "hur",
+          "när",
+          "ska",
+          "skall",
+          "vad",
+          "var",
+          "varför",
+          "varifrån",
+          "vem",
+          "vilka",
+          "vilken",
+          "vilket",
+          "är",
+          # English
+          "how many",
+          "how much",
+          "how",
+          "what",
+          "when",
+          "where",
+          "which",
+          "who",
+          "why",
+        ]
+        question.sub!(/#{interrogative_words}/in, answer)
+
+        pronoun = {
+          "jag" => "du",
+          "dig" => "mig",
+          "me" => "you",
+          "i" => "you",
+        }
+        question.sub!(/\b(?:#{pronoun.keys.join("|")})\b/n) {|p| pronoun[p] }
+
         response.reply(question + ":" + answer)
       end
 
