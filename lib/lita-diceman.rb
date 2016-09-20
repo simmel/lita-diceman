@@ -56,7 +56,7 @@ module Lita
           "me" => "you",
           "i" => "you",
         }
-        question.sub!(/\b(?:#{pronoun.keys.join("|")})\b/) {|p| pronoun[p] }
+        question.sub!(/\b(?:#{pronoun.keys.join("|")})\b/i) {|p| pronoun[p] }
 
         response.reply(question)
       end
